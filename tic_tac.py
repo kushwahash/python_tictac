@@ -134,3 +134,10 @@ def player_choice(board):
         else:
             print(f"{position} is not free")
 
+def replay():
+    str_choice = (input('\nDo you want to play the game again ? (Yes/No)'))
+    if str_choice == 'Yes':
+        return True
+    else:
+        return False
+
