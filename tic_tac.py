@@ -20,3 +20,4 @@ def display_board(board):
     print(f"{board[4]}|{board[5]}|{board[6]}")
     print("-|-|-")
     print(f"{board[7]}|{board[8]}|{board[9]}")
+
