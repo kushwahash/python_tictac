@@ -1,4 +1,5 @@
 from IPython.display import clear_output
+import random
 
 
 '''
@@ -30,11 +31,11 @@ def player_input():
     player1 = 'W'
     got_right_value = True
     while got_right_value:
-        player1 = input('Player 1 select your marker X or O')
+        player1 = input('\nSelect your marker X or O :: ')
         if(player1.upper() == 'X' or player1.upper() == 'O'):
             return player1.upper()
         else:
-            print('Please select a valid marker X or O')
+            print('Please select a valid marker X or O\n')
 
 
 '''
@@ -82,5 +83,54 @@ def win_check(board, mark):
         if(board[index] == mark and is_winner(index,board,mark)):
            return True
     
-    return False    
+    return False
+
+'''
+function that uses the random module to randomly decide which player goes first.
+Return:  a string of which player went first.
+'''
+def choose_first():
+    if random.randint(1,2) == 1:
+        return "Player 1"
+    
+    return "Player 2"
+
+'''
+Input : board, index
+Returns : a boolean indicating whether a space on the board is freely available.
+'''
+def space_check(board, position):
+    if board[position] == 'X' or board[position] == 'O':
+        return False
+    
+    return True
+
+'''
+function that checks if the board is full
+Input : board 
+Returns:  a boolean value. True if full, False otherwise.
+'''
+def full_board_check(board):
+    for index in range(1,len(board)):
+        if board[index] in ['X','O']:
+            continue
+        else:
+            return False
+        
+    
+    return True
+
+'''
+function that asks for a player's next position (as a number 1-9) and then 
+uses the function from step 6 to check if it's a free position. 
+Return : If it is, then return the position for later use.
+'''
+
+def player_choice(board):
+    while True:
+        position = int(input('Please, enter your next position, a number between 1-9'))
+        if position >= 1 and position <= 9 and space_check(board,position):
+            return position
+        else:
+            print(f"{position} is not free")
 
