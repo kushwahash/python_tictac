@@ -128,15 +128,15 @@ Return : If it is, then return the position for later use.
 
 def player_choice(board):
     while True:
-        position = int(input('Please, enter your next position, a number between 1-9'))
+        position = int(input('Please, enter your next position, a number between 1-9 :: '))
         if position >= 1 and position <= 9 and space_check(board,position):
             return position
         else:
             print(f"{position} is not free")
 
 def replay():
-    str_choice = (input('\nDo you want to play the game again ? (Yes/No)'))
-    if str_choice == 'Yes':
+    str_choice = (input('\nDo you want to play the game again ? (Press Y)'))
+    if str_choice.upper() == 'Y':
         return True
     else:
         return False
