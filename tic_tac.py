@@ -49,6 +49,11 @@ def place_marker(board, marker, position):
 Check for winning condition for tictac
 Input : Current index, game board, mark (mark to check for winner)
 Output : True or False
+|1|2|3|
+-------
+|4|5|6|
+-------
+|7|8|9|
 '''
 def is_winner(index,board,mark):
      #//check row wise
@@ -58,7 +63,7 @@ def is_winner(index,board,mark):
     
     #//check col wise
     if index in [1,2,3]:
-        if board[index+3] == mark and board[index+4] == mark:
+        if board[index+3] == mark and board[index+6] == mark:
             return True
     
     #check diagonal wise
@@ -82,6 +87,8 @@ def win_check(board, mark):
     for index in range(1,len(board)):
         if(board[index] == mark and is_winner(index,board,mark)):
            return True
+        else:
+            continue
     
     return False
 
