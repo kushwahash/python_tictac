@@ -135,11 +135,18 @@ Return : If it is, then return the position for later use.
 
 def player_choice(board):
     while True:
-        position = int(input('Please, enter your next position, a number between 1-9 :: '))
-        if position >= 1 and position <= 9 and space_check(board,position):
-            return position
+        try:
+            position = int(input('Please, enter your next position, a number between 1-9 :: '))
+        except:
+            print("Not a number, select a number between 1-9")
         else:
-            print(f"{position} is not free")
+            if position >= 1 and position <= 9 and space_check(board,position):
+                return position
+            else:
+                print(f"{position} is not free")
+
+
+        
 
 def replay():
     str_choice = (input('\nDo you want to play the game again ? (Press Y)'))
